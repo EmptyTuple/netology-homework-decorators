@@ -1,4 +1,5 @@
 import itertools
+from functools import lru_cache
 from loggers import just_logger, logger_with_path
 
 # Use the previous homework functions
@@ -18,7 +19,7 @@ def flatten_many_nested(iterable: list | tuple)-> tuple:
     try:
         flat_thing = list(itertools.chain.from_iterable(iterable))
         if any(map(lambda x: type(x) == list, flat_thing)) is True:
-            return flatten_many_nested(flat_thing)
+            flat_thing = flatten_many_nested(flat_thing)
         return tuple(flat_thing)
     except Exception as ex:
         print('There is a non-symmetric nesting in the iterable!')
