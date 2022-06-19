@@ -33,7 +33,3 @@ def logger_with_path(path_to_log):
             
         return log_it
     return _logger_with_path
-
-print(os.getcwd())
-
-# os.makedirs('nested/nested')
